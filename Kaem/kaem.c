@@ -956,6 +956,11 @@ int _execute(FILE* script, char** argv)
 	/* exec without forking */
 	int exec = FALSE;
 
+	if((NULL == token) || (NULL == token->value) || match("", token->value))
+	{
+		return FAILURE;
+	}
+
 	/* Actually do the execution */
 	if(is_envar(token->value) == TRUE)
 	{
@@ -1041,6 +1046,11 @@ int _execute(FILE* script, char** argv)
 	char** array;
 	char** envp;
 	/* Get the full path to the executable */
+	if((NULL == token) || (NULL == token->value) || match("", token->value))
+	{
+		return FAILURE;
+	}
+
 	char* program = find_executable(token->value);
 
 	/* Check we can find the executable */
