@@ -613,9 +613,9 @@ char* express_number(int value, char c)
 char* express_word(int value, char c)
 {
 	char* s = calloc(43, sizeof(char));
+	require(NULL != s, "Exhausted available memory\n");
 	s[0] = '.';
 	char* ch = s + 1;
-	require(NULL != ch, "Exhausted available memory\n");
 	int size = 4;
 	int shift;
 	int immediate;
